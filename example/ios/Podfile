@@ -9,6 +9,8 @@ target 'DocumentReader' do
   use_react_native!(:path => config["reactNativePath"])
 
   use_flipper!({ 'Flipper' => '0.87.0', 'Flipper-Folly' => '2.5.3', 'Flipper-RSocket' => '1.3.1' })
+  pod 'RNCustomizedImagePicker', :path => '../node_modules/react-native-customized-image-picker'
+
   post_install do |installer|
     flipper_post_install(installer)
   end

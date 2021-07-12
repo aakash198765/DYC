@@ -21,8 +21,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     defaultConfig {
-        applicationId "com.regula.dr.fullrfid"
-        minSdkVersion rootProject.ext.minSdkVersion
+        applicationId "com.regula.documentreader"
+        minSdkVersion 21
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
