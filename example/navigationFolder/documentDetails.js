@@ -9,15 +9,16 @@ const BackIcon = (props) => (
 export const DocumentDetails = ( {route, navigation}) => {
 
   //extract params
-  const {fullName, pan, dob, dl_license_audit, dl_license_classification_code, dl_licence_restriction_code } = route.params;
+  const {fullName, pan, dob, nationality, issue_date, expiry_date, dept } = route.params;
 
   const details = [
     {id: 1, field: 'Name', value: fullName },
-    {id: 2, field: 'PAN   ', value: pan  },
+    {id: 2, field: 'Passport No.   ', value: pan  },
     {id: 3, field: 'DOB   ',  value: dob },
-    {id: 4, field: 'DL_Licence_Audit  ',  value: dl_license_audit },
-    {id: 5, field: 'DL_Licence_Classification_Code  ',  value: dl_license_classification_code},
-    {id: 6, field: 'DL_License_Restriction_Code   ',  value: dl_licence_restriction_code } 
+    {id: 4, field: 'Nationality  ',  value: nationality },
+    {id: 5, field: 'Department   ',  value: dept }, 
+    {id: 6, field: 'Issue Date  ',  value: issue_date},
+    {id: 7, field: 'Expiry Date   ',  value: expiry_date }, 
   ]; 
 
 

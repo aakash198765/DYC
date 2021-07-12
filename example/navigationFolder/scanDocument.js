@@ -91,7 +91,7 @@ export default class Scanning extends Component {
             })
             DocumentReader.getDocumentReaderIsReady((isReady) => {
               if (isReady) {
-                this.setState({ fullName: "Ready to Scan" })
+                this.setState({ fullName: "Ready to Scan Passport" })
                 //addCertificates()
                
               } else
@@ -104,17 +104,18 @@ export default class Scanning extends Component {
 
     this.state = { 
       BackAction: ()=> <TopNavigation icon={BackIcon}  onPress={navigateBack} />,
-      navigateDetails: ()=> {props.navigation.navigate('Details', {fullName: this.state.name, pan: this.state.pan, dob: this.state.dob, dl_license_audit: dl_license_audit, dl_license_classification_code: dl_license_classification_code,
-                              dl_licence_restriction_code: dl_licence_restriction_code,                   
+      navigateDetails: ()=> {props.navigation.navigate('Details', {fullName: this.state.name, pan: this.state.pan, dob: this.state.dob, nationality: this.state.nationality, issue_date: this.state.issue_date,
+        expiry_date: this.state.expiry_date, dept: this.state.dept,                  
        });},
       fullName: "Please wait...",
       name: '',
       pan: '',
       dob: '',
       docType: '',
-      dl_license_audit: '',
-      dl_license_classification_code: '',
-      dl_licence_restriction_code: '',
+      nationality: '',
+      dept: '',
+      issue_date: '',
+      expiry_date: '',
       doRfid: false,
       canRfid: true,
       canRfidTitle: '(available)',
@@ -175,14 +176,15 @@ export default class Scanning extends Component {
   }
 
   displayResults(results) {
-    this.setState({ fullName: 'Scanned Document Available',
+    this.setState({ fullName: 'Passport Scanned',
                     name: results.getTextFieldValueByType({ fieldType: Enum.eVisualFieldType.FT_SURNAME_AND_GIVEN_NAMES }), 
                     pan: results.getTextFieldValueByType({ fieldType: Enum.eVisualFieldType.FT_DOCUMENT_NUMBER }),
                     dob: results.getTextFieldValueByType({ fieldType: Enum.eVisualFieldType.FT_DATE_OF_BIRTH }),
                     docType: results.getTextFieldValueByType({ fieldType: Enum.eVisualFieldType.FT_DS_CERTIFICATE_ISSUER }),
-                    dl_license_audit:  results.getTextFieldValueByType({ fieldType: Enum.eVisualFieldType.FT_AUDIT_INFORMATION }),
-                    dl_license_classification_code: results.getTextFieldValueByType({ fieldType: Enum.eVisualFieldType.FT_DL_CLASS }),
-                    dl_licence_restriction_code: results.getTextFieldValueByType({ fieldType: Enum.eVisualFieldType.FT_DL_RESTRICTION_CODE }),
+                    nationality:  results.getTextFieldValueByType({ fieldType: Enum.eVisualFieldType.FT_ADDRESS_COUNTRY }), 
+                    issue_date: results.getTextFieldValueByType({ fieldType: Enum.eVisualFieldType.FT_DATE_OF_ISSUE }),
+                    expiry_date: results.getTextFieldValueByType({ fieldType: Enum.eVisualFieldType.FT_DATE_OF_EXPIRY }),
+                    dept: results.getTextFieldValueByType({ fieldType: Enum.eVisualFieldType.FT_DEPARTMENT }),
 
 
            })
